@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Quiz Maker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📝 Online Quiz Maker</h1>
+            <p>Create, Share, and Take Interactive Quizzes</p>
+        </div>
+
+        <div class="content">
+            <!-- Home Page -->
+            <div id="homePage" class="page active">
+                <h2 style="text-align: center; margin-bottom: 20px; color: #333;">Welcome to Quiz Maker!</h2>
+                <p style="text-align: center; color: #666; margin-bottom: 30px;">
+                    Create engaging quizzes or test your knowledge by taking existing ones. Get instant feedback and track your progress!
+                </p>
+                <div class="home-buttons">
+                    <button class="btn" onclick="showPage('createPage')">
+                        ✏️ Create a Quiz
+                    </button>
+                    <button class="btn btn-secondary" onclick="showPage('listPage')">
+                        📚 Take a Quiz
+                    </button>
+                </div>
+            </div>
+
+            <!-- Create Quiz Page -->
+            <div id="createPage" class="page">
+                <h2 style="margin-bottom: 25px; color: #333;">Create Your Quiz</h2>
+                
+                <div class="form-group">
+                    <label>Quiz Title *</label>
+                    <input type="text" id="quizTitle" placeholder="Enter quiz title">
+                </div>
+
+                <div class="form-group">
+                    <label>Quiz Description</label>
+                    <textarea id="quizDescription" placeholder="Brief description of your quiz"></textarea>
+                </div>
+
+                <div id="questionsContainer"></div>
+
+                <button class="btn btn-small" onclick="addQuestion()">+ Add Question</button>
+                <br><br>
+                <button class="btn" onclick="saveQuiz()">💾 Save Quiz</button>
+                <button class="btn btn-back" onclick="showPage('homePage')">← Back to Home</button>
+            </div>
+
+            <!-- Quiz List Page -->
+            <div id="listPage" class="page">
+                <h2 style="margin-bottom: 25px; color: #333;">Available Quizzes</h2>
+                <div id="quizList"></div>
+                <button class="btn btn-back" onclick="showPage('homePage')">← Back to Home</button>
+            </div>
+
+            <!-- Take Quiz Page -->
+            <div id="takePage" class="page">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressBar"></div>
+                </div>
+                <div id="quizContainer"></div>
+                <div style="text-align: center; margin-top: 20px;">
+                    <button class="btn" id="nextBtn" onclick="nextQuestion()">Next Question</button>
+                    <button class="btn btn-back" onclick="showPage('listPage')">← Back to Quizzes</button>
+                </div>
+            </div>
+
+            <!-- Results Page -->
+            <div id="resultsPage" class="page">
+                <div class="results-container">
+                    <h2 style="color: #333; margin-bottom: 20px;">Quiz Complete! 🎉</h2>
+                    <div class="score-display" id="scoreDisplay"></div>
+                    <div class="results-message" id="resultsMessage"></div>
+                    <div id="answerReview"></div>
+                    <button class="btn" onclick="showPage('listPage')">📚 Take Another Quiz</button>
+                    <button class="btn btn-secondary" onclick="showPage('homePage')">🏠 Back to Home</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
